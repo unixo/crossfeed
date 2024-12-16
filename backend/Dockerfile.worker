@@ -79,6 +79,9 @@ COPY --from=deps /go/bin/csv2cpe /go/bin/nvdsync /go/bin/cpe2cve /usr/bin/
 
 COPY --from=deps /etc/ssl/certs /etc/ssl/certs
 
+COPY --from=deps /lib/libc.musl-x86_64.so.1 /lib
+COPY --from=deps /lib/ld-musl-x86_64.so.1 /lib
+
 COPY --from=rubyBuild /usr/bin/intrigue-ident  /usr/bin/
 
 ENV GLOBAL_AGENT_HTTP_PROXY=http://localhost:8080
